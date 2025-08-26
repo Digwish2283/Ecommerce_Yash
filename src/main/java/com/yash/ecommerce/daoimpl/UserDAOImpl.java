@@ -6,8 +6,6 @@ import com.yash.ecommerce.domain.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-
-
 import java.sql.ResultSet;
 
 public class UserDAOImpl implements UserDAO {
