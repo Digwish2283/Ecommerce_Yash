@@ -15,6 +15,9 @@ public class User {
         this.userRole = userRole;
     }
 
+    public User() {
+    }
+
     public User(String userName, String userEmail, String userPassword, String userRole) {
         this.userName = userName;
         this.userEmail = userEmail;
