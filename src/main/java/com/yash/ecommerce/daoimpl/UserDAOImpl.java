@@ -20,6 +20,9 @@ public class UserDAOImpl implements UserDAO {
         this.conn = conn;
     }
 
+
+
+
     @Override
     public boolean registerUser(User u) {
         boolean f = false;
