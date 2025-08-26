@@ -10,6 +10,9 @@ public class Product {
     private int categoryId; // Foreign key
     private Integer subcategoryId; // Nullable foreign key
 
+
+
+
     public Product() {}
 
     public int getProductId() {
