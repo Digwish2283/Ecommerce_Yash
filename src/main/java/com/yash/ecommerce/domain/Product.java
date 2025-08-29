@@ -1,62 +1,95 @@
 package com.yash.ecommerce.domain;
 
 public class Product {
-    private int productId; // Auto-increment
-    private String name;
-    private String description;
-    private double price; // CHECK(price >= 0)
-    private int stockQuantity; // Default: 0, CHECK(stockQuantity >= 0)
-    private String imageUrl;
-    private int categoryId; // Foreign key
-    private Integer subcategoryId; // Nullable foreign key
+        private int productId;
+        private String productTitle;
+        private String productDescription;
+        private String productImage;
+        private double productPrice;
+        private double productDiscount;
+        private int productQuantity;
+        private int categoryId;
 
 
+    public Product() {
+    }
 
+    public Product(int productId, String productTitle, String productDescription, String productImage, double productPrice, double productDiscount, int productQuantity, int categoryId) {
+        this.productId = productId;
+        this.productTitle = productTitle;
+        this.productDescription = productDescription;
+        this.productImage = productImage;
+        this.productPrice = productPrice;
+        this.productDiscount = productDiscount;
+        this.productQuantity = productQuantity;
+        this.categoryId = categoryId;
+    }
 
-    public Product() {}
+    public Product(String productTitle, String productDescription, String productImage, double productPrice, double productDiscount, int productQuantity, int categoryId) {
+        this.productTitle = productTitle;
+        this.productDescription = productDescription;
+        this.productImage = productImage;
+        this.productPrice = productPrice;
+        this.productDiscount = productDiscount;
+        this.productQuantity = productQuantity;
+        this.categoryId = categoryId;
+    }
+
 
     public int getProductId() {
         return productId;
     }
 
-    public String getName() {
-        return name;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getProductTitle() {
+        return productTitle;
     }
 
-    public String getDescription() {
-        return description;
+    public void setProductTitle(String productTitle) {
+        this.productTitle = productTitle;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public String getProductDescription() {
+        return productDescription;
     }
 
-    public double getPrice() {
-        return price;
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public String getProductImage() {
+        return productImage;
     }
 
-    public int getStockQuantity() {
-        return stockQuantity;
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
     }
 
-    public void setStockQuantity(int stockQuantity) {
-        this.stockQuantity = stockQuantity;
+    public double getProductPrice() {
+        return productPrice;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public void setProductPrice(double productPrice) {
+        this.productPrice = productPrice;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public double getProductDiscount() {
+        return productDiscount;
+    }
+
+    public void setProductDiscount(double productDiscount) {
+        this.productDiscount = productDiscount;
+    }
+
+    public int getProductQuantity() {
+        return productQuantity;
+    }
+
+    public void setProductQuantity(int productQuantity) {
+        this.productQuantity = productQuantity;
     }
 
     public int getCategoryId() {
@@ -67,11 +100,6 @@ public class Product {
         this.categoryId = categoryId;
     }
 
-    public Integer getSubcategoryId() {
-        return subcategoryId;
-    }
-
-    public void setSubcategoryId(Integer subcategoryId) {
-        this.subcategoryId = subcategoryId;
-    }
 }
+
+
