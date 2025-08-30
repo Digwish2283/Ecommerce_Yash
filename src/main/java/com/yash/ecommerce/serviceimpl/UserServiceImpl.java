@@ -6,7 +6,6 @@ import com.yash.ecommerce.domain.User;
 import com.yash.ecommerce.service.UserService;
 import com.yash.ecommerce.util.JdbcUtil;
 
-import java.nio.channels.ScatteringByteChannel;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -16,7 +15,7 @@ public class UserServiceImpl implements UserService {
 
    public   UserServiceImpl() {
        try {
-           Connection conn = JdbcUtil.getConn();
+           Connection conn = JdbcUtil.getConnection();
            this.userDAO = new UserDAOImpl(conn);
        } catch (SQLException e) {
            e.printStackTrace();
