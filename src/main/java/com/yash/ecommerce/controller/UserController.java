@@ -13,33 +13,39 @@ import java.io.IOException;
 
 @WebServlet("/register")
 public class UserController extends HttpServlet {
-       private UserService userService = new UserServiceImpl() ;
+    private UserService userService = new UserServiceImpl();
 
-//    @Override
-//    public void init() throws ServletException {
-//        super.init();
-//        // Initialize UserService once when servlet is created
-//        userService = new UserServiceImpl();
-//        // You can also read servlet init parameters here if any
-//        // String someParam = getServletConfig().getInitParameter("paramName");
-//        System.out.println("UserController servlet initialized.");
-//    }
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("register.jsp").forward(req, resp);
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-          String userName= req.getParameter("name");
+        String userName = req.getParameter("name");
         String userEmail = req.getParameter("email");
         String userPassword = req.getParameter("password");
-// storing
-        User us = new User(userName,userEmail,userPassword);
+        String confirmPassword = req.getParameter("confirmPassword");
 
-            boolean success = userService.registerUser(us);
+        // Basic validation
+        if (!userPassword.equals(confirmPassword)) {
+            req.setAttribute("error", "Passwords do not match");
+            req.getRequestDispatcher("register.jsp").forward(req, resp);
+            return;
+        }
 
-            if(success){
-                resp.sendRedirect("index.jsp");
-            }
-            else{
-                resp.sendRedirect("register.jsp");
-            }
+        // Create user object
+        User user = new User(userName, userEmail, userPassword);
+
+        // Register user
+        boolean success = userService.registerUser(user);
+
+        if (success) {
+            req.setAttribute("success", "Registration successful! Please login.");
+            req.getRequestDispatcher("login.jsp").forward(req, resp);
+        } else {
+            req.setAttribute("error", "Registration failed. Try again.");
+            req.getRequestDispatcher("register.jsp").forward(req, resp);
+        }
     }
 }

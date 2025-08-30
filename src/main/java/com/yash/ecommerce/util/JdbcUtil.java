@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class JdbcUtil {
-    private final static String URL = "jdbc:mysql://localhost:3306/ecommerce";
-    private final static String user = "root";
-    private final static String password = "root";
+    private final static String URL = "";
+    private final static String user = "";
+    private final static String password = "";
 
     // static is imp to otherwise it will not work
     private static Connection conn ;
