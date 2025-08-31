@@ -38,11 +38,11 @@ public class UserLoginController extends HttpServlet {
             session.setAttribute("userRole", user.getUserRole());
 
             // Redirect based on role
-            if ("admin".equals(user.getUserRole())) {
-                resp.sendRedirect("admin/dashboard.jsp");
-            } else {
+//            if ("admin".equals(user.getUserRole())) {
+//                resp.sendRedirect("admin/dashboard.jsp");
+//            } else {
                 resp.sendRedirect("index.jsp");
-            }
+//            }
         } else {
             req.setAttribute("error", "Invalid email or password");
             req.getRequestDispatcher("login.jsp").forward(req, resp);
