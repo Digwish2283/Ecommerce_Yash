@@ -1,6 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,12 +32,12 @@
             <form class="search-form row gx-2 gy-2">
                 <div class="search-group col-lg-6 col-md-12 mb-2 mb-lg-0">
                     <input type="text" class="form-control" placeholder="Search products..." id="searchInput">
-                    <button class="btn-search" type="button" onclick="searchProducts()">
+                    <button class="btn-search" type="button">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
                 <div class="sort-group col-lg-3 col-md-6 mb-2 mb-lg-0">
-                    <select class="form-select" id="sortSelect" onchange="sortProducts()">
+                    <select class="form-select" id="sortSelect">
                         <option value="">Sort by...</option>
                         <option value="name">Name A-Z</option>
                         <option value="price-low">Price: Low to High</option>
@@ -51,10 +48,10 @@
                 </div>
                 <div class="view-group col-lg-3 col-md-6 text-end">
                     <div class="view-toggle">
-                        <button class="view-btn active" type="button" onclick="toggleView('grid')" id="gridView">
+                        <button class="view-btn active" type="button" id="gridView">
                             <i class="fas fa-th"></i>
                         </button>
-                        <button class="view-btn" type="button" onclick="toggleView('list')" id="listView">
+                        <button class="view-btn" type="button" id="listView">
                             <i class="fas fa-list"></i>
                         </button>
                     </div>
@@ -76,22 +73,22 @@
                     <div class="mb-4">
                         <h6 class="fw-bold">Categories</h6>
                         <div class="list-group list-group-flush">
-                            <button class="category-filter active" onclick="filterCategory('all')">
+                            <button class="category-filter active">
                                 <i class="fas fa-th me-2"></i>All Categories
                             </button>
-                            <button class="category-filter" onclick="filterCategory('electronics')">
+                            <button class="category-filter">
                                 <i class="fas fa-laptop me-2"></i>Electronics
                             </button>
-                            <button class="category-filter" onclick="filterCategory('clothing')">
+                            <button class="category-filter">
                                 <i class="fas fa-tshirt me-2"></i>Clothing
                             </button>
-                            <button class="category-filter" onclick="filterCategory('books')">
+                            <button class="category-filter">
                                 <i class="fas fa-book me-2"></i>Books
                             </button>
-                            <button class="category-filter" onclick="filterCategory('home')">
+                            <button class="category-filter">
                                 <i class="fas fa-home me-2"></i>Home & Garden
                             </button>
-                            <button class="category-filter" onclick="filterCategory('sports')">
+                            <button class="category-filter">
                                 <i class="fas fa-dumbbell me-2"></i>Sports
                             </button>
                         </div>
@@ -131,7 +128,7 @@
                         </div>
                     </div>
                     <!-- Clear Filters -->
-                    <button class="btn btn-outline-secondary w-100" onclick="clearFilters()">
+                    <button class="btn btn-outline-secondary w-100" >
                         <i class="fas fa-times me-2"></i>Clear Filters
                     </button>
                 </div>
@@ -164,7 +161,7 @@
                                     $799
                                     <span class="original-price">$899</span>
                                 </div>
-                                <button class="btn-add-cart" onclick="addToCart(1)">
+                                <button class="btn-add-cart" >
                                     <i class="fas fa-shopping-cart me-2"></i>Add to Cart
                                 </button>
                             </div>
@@ -189,7 +186,7 @@
                                     $59
                                     <span class="original-price"></span>
                                 </div>
-                                <button class="btn-add-cart" onclick="addToCart(2)">
+                                <button class="btn-add-cart">
                                     <i class="fas fa-shopping-cart me-2"></i>Add to Cart
                                 </button>
                             </div>
