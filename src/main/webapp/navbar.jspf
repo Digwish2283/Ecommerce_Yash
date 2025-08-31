@@ -15,48 +15,54 @@
                 <li class="nav-item">
                     <a class="nav-link" href="productListing.jsp"><i class="fas fa-box"></i>Products</a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link" href="#about"><i class="fas fa-info-circle"></i>About</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
-                <c:choose>
-                    <c:when test="${not empty sessionScope.user}">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                                <i class="fas fa-user-circle"></i>
-                                Welcome, ${sessionScope.userName}!
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#profile"><i class="fas fa-user"></i>Profile</a></li>
-                                <li><a class="dropdown-item" href="#orders"><i class="fas fa-shopping-bag"></i>My Orders</a></li>
+                <% 
+                    Object user = session.getAttribute("user");
+                    String userName = (String) session.getAttribute("userName");
+                    String userRole = (String) session.getAttribute("userRole");
+                    
+                    if (user != null) { 
+                %>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle"></i>
+                            Welcome, <%= userName %>!
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#profile"><i class="fas fa-user"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#orders"><i class="fas fa-shopping-bag"></i>My Orders</a></li>
+                            <li><hr class="dropdown-divider"></li>
+
+                                <li><a class="dropdown-item" href="admin/dashboard.jsp"><i class="fas fa-cog"></i>Admin Panel</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <c:if test="${sessionScope.userRole == 'admin'}">
-                                    <li><a class="dropdown-item" href="admin/dashboard.jsp"><i class="fas fa-cog"></i>Admin Panel</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                </c:if>
-                                <li><a class="dropdown-item" href="logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link position-relative" href="#cart">
-                                <i class="fas fa-shopping-cart"></i>
-                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                    3
-                                </span>
-                            </a>
-                        </li>
-                    </c:when>
-                    <c:otherwise>
-                        <li class="nav-item">
-                            <a class="nav-link" href="login.jsp"><i class="fas fa-sign-in-alt"></i>Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="register.jsp"><i class="fas fa-user-plus"></i>Register</a>
-                        </li>
-                    </c:otherwise>
-                </c:choose>
+
+                            <li><a class="dropdown-item" href="logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="#cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                3
+                            </span>
+                        </a>
+                    </li>
+                <% 
+                    } else { 
+                %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.jsp"><i class="fas fa-sign-in-alt"></i>Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.jsp"><i class="fas fa-user-plus"></i>Register</a>
+                    </li>
+                <% 
+                    } 
+                %>
             </ul>
         </div>
     </div>

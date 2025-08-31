@@ -8,7 +8,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
       body {
-
           min-height: 100vh;
           font-family: 'Poppins', Arial, Helvetica, sans-serif;
           color: #4B3145;
@@ -97,23 +96,6 @@
           font-size: 1.13rem;
           padding: 0;
       }
-      .register-card .password-strength-bar {
-          height: 5px;
-          border-radius: 3px;
-          background: #e9ecef;
-          margin-top: 0.5rem;
-          overflow: hidden;
-      }
-      .register-card .password-strength-fill {
-          height: 100%;
-          transition: width 0.3s ease;
-          border-radius: 3px;
-      }
-      .strength-weak { background: #dc3545; width: 25%; }
-      .strength-fair { background: #ffc107; width: 50%; }
-      .strength-good { background: #fd7e14; width: 75%; }
-      .strength-strong { background: #28a745; width: 100%; }
-
       .register-card .form-check-label {
           font-size: 0.98rem;
       }
@@ -175,9 +157,6 @@
                     <i class="fas fa-eye" id="toggleIcon1"></i>
                 </button>
                 <div class="invalid-feedback">Password must meet requirements.</div>
-                <div class="password-strength-bar mt-1">
-                    <div id="passwordStrengthFill" class="password-strength-fill"></div>
-                </div>
             </div>
 
             <div class="mb-3 position-relative">
@@ -209,6 +188,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+        // Toggle password visibility
         function togglePassword(fieldId, iconId) {
             const field = document.getElementById(fieldId);
             const icon = document.getElementById(iconId);
@@ -224,37 +204,22 @@
         const password = document.getElementById('password');
         const confirmPassword = document.getElementById('confirmPassword');
         const confirmFeedback = document.getElementById('confirmPasswordFeedback');
-        const passwordStrengthFill = document.getElementById('passwordStrengthFill');
         const registerForm = document.getElementById('registerForm');
 
-        password.addEventListener('input', () => {
-            const val = password.value;
-            const conditions = [
-                val.length >= 8,
-                /[A-Z]/.test(val),
-                /[a-z]/.test(val),
-                /[0-9]/.test(val)
-            ];
-            const count = conditions.filter(Boolean).length;
-            password.classList.remove('is-invalid');
-            switch(count) {
-                case 0: passwordStrengthFill.style.width = '0%'; break;
-                case 1: passwordStrengthFill.className = 'password-strength-fill strength-weak'; break;
-                case 2: passwordStrengthFill.className = 'password-strength-fill strength-fair'; break;
-                case 3: passwordStrengthFill.className = 'password-strength-fill strength-good'; break;
-                case 4: passwordStrengthFill.className = 'password-strength-fill strength-strong'; break;
-            }
-        });
-
-        confirmPassword.addEventListener('input', () => {
-            if(confirmPassword.value && confirmPassword.value !== password.value) {
+        // Confirm password match validation (real-time)
+        function validatePasswordMatch() {
+            if (confirmPassword.value && confirmPassword.value !== password.value) {
                 confirmPassword.classList.add('is-invalid');
                 confirmFeedback.textContent = 'Passwords do not match.';
             } else {
                 confirmPassword.classList.remove('is-invalid');
             }
-        });
+        }
 
+        password.addEventListener('input', validatePasswordMatch);
+        confirmPassword.addEventListener('input', validatePasswordMatch);
+
+        // Form submission validation
         registerForm.addEventListener('submit', function(event) {
             let valid = true;
 
