@@ -1,3 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.yash.ecommerce.domain.Product" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,103 +29,64 @@
         </div>
     </div>
     <div class="container">
-        <div class="search-section mb-4">
-            <form class="search-form row gx-2 gy-2">
-                <div class="search-group col-lg-6 col-md-12 mb-2 mb-lg-0">
-                    <input type="text" class="form-control" placeholder="Search products..." id="searchInput">
-                    <button class="btn-search" type="button">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-                <div class="sort-group col-lg-3 col-md-6 mb-2 mb-lg-0">
-                    <select class="form-select" id="sortSelect">
-                        <option value="">Sort by...</option>
-                        <option value="name">Name A-Z</option>
-                        <option value="price-low">Price: Low to High</option>
-                        <option value="price-high">Price: High to Low</option>
-                        <option value="rating">Highest Rated</option>
-                        <option value="newest">Newest First</option>
-                    </select>
-                </div>
-                <div class="view-group col-lg-3 col-md-6 text-end">
-                    <div class="view-toggle">
-                        <button class="view-btn active" type="button" id="gridView">
-                            <i class="fas fa-th"></i>
-                        </button>
-                        <button class="view-btn" type="button" id="listView">
-                            <i class="fas fa-list"></i>
-                        </button>
-                    </div>
-                    <span class="product-count ms-2">
-                        <span id="productCount">2</span> products
-                    </span>
-                </div>
-            </form>
-        </div>
+        <!-- Search, Sort, View section (keep as-is) -->
         <div class="row">
-            <!-- Filter Sidebar -->
+            <!-- Filter Sidebar (keep as-is) -->
             <div class="col-lg-3">
-                <div class="filter-sidebar">
-                    <h5 class="fw-bold mb-3">
-                        <i class="fas fa-filter me-2"></i>Filters
-                    </h5>
-                    <!-- Categories -->
-                    <div class="mb-4">
-                        <h6 class="fw-bold">Categories</h6>
-                        <div class="list-group list-group-flush">
-                            <button class="category-filter active">
-                                <i class="fas fa-th me-2"></i>All Categories
-                            </button>
-                            <button class="category-filter">
-                                <i class="fas fa-laptop me-2"></i>Category 1
-                            </button>
-                            <button class="category-filter">
-                                <i class="fas fa-tshirt me-2"></i>Category 2
-                            </button>
-                            <button class="category-filter">
-                                <i class="fas fa-book me-2"></i>Category 3
-                            </button>
-                            <button class="category-filter">
-                                <i class="fas fa-home me-2"></i>Category 4
-                            </button>
-                            <button class="category-filter">
-                                <i class="fas fa-dumbbell me-2"></i>Category 5
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <!-- ... sidebar code ... -->
             </div>
-
             <!-- Products Grid -->
             <div class="col-lg-9">
                 <div class="row" id="productsContainer">
-                    <!-- PRODUCT 1 -->
-                    <div class="col-xl-4 col-md-6 mb-4 product-item" data-category="electronics" data-price="799">
-                        <div class="product-card">
-                            <div class="product-badge new">NEW</div>
-                            <div class="product-image">
-                                <img src="https://cdn.vox-cdn.com/thumbor/gRRyI6jZSAeMRq3C1is36HtvFfs=/3x0:1017x676/1200x800/filters:focal(3x0:1017x676)/cdn.vox-cdn.com/imported_assets/1575983/smartphone-lineup_1020.jpg"/>
+                    <%
+                        List<Product> products = (List<Product>) request.getAttribute("productList");
+                        if (products != null && !products.isEmpty()) {
+                            for (Product product : products) {
+                    %>
+                    <div class="col-xl-4 col-md-6 mb-4 product-item"
+                         data-category="category<%= product.getCategoryId() %>"
+                         data-price="<%= product.getProductPrice() %>">
+                        <div class="product-card h-100 d-flex flex-column">
+                            <div class="product-badge <%= (product.getProductDiscount() == 0) ? "new" : "sale" %>">
+                                <%= (product.getProductDiscount() == 0) ? "NEW" : "SALE" %>
                             </div>
-                            <div class="product-info">
-                                <h5 class="product-title">Smartphone X200</h5>
-                                <p class="product-description">Latest generation smartphone with amazing camera and battery life.</p>
-                                <div class="product-rating">
-                                    <span class="stars">4 stars</span>
-                                    <span class="text-muted">(123 reviews)</span>
+                            <div class="product-image text-center">
+                                <img src="<%= product.getProductImage() %>" alt="<%= product.getProductTitle() %>"
+                                     style="width:100%;max-height:200px;object-fit:cover;"/>
+                            </div>
+                            <div class="product-info flex-grow-1">
+                                <h5 class="product-title"><%= product.getProductTitle() %></h5>
+                                <p class="product-description"><%= product.getProductDescription() %></p>
+                                <div class="product-rating mb-2">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="text-muted">(No reviews)</span>
                                 </div>
-                                <div class="product-price">
-                                    $799
-                                    <span class="original-price">$899</span>
+                                <div class="product-price mb-2">
+                                    $<%= product.getProductPrice() - product.getProductDiscount() %>
+                                    <% if (product.getProductDiscount() > 0) { %>
+                                        <span class="original-price text-muted text-decoration-line-through ms-2">
+                                            $<%= product.getProductPrice() %>
+                                        </span>
+                                    <% } %>
                                 </div>
-                                <button class="btn-add-cart" >
+                                <button class="btn btn-primary w-100 mt-auto">
                                     <i class="fas fa-shopping-cart me-2"></i>Add to Cart
                                 </button>
                             </div>
                         </div>
                     </div>
+                    <%
+                            }
+                        } else {
+                    %>
+                    <div class="col-12">
+                        <div class="alert alert-info text-center">No products available.</div>
                     </div>
+                    <%
+                        }
+                    %>
                 </div>
-                <!-- Pagination -->
+                <!-- Pagination (keep as-is or make dynamic as needed) -->
                 <nav aria-label="Products pagination" class="mt-4">
                     <ul class="pagination pagination-custom justify-content-center">
                         <li class="page-item disabled">
