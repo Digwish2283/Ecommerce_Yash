@@ -13,7 +13,7 @@ public class JdbcUtil {
     private static Connection conn ;
 
     //establishing connection
-    public static Connection getConn() throws SQLException {
+    public static Connection getConnection() throws SQLException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
