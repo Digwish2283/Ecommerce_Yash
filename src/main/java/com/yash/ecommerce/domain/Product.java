@@ -1,14 +1,14 @@
 package com.yash.ecommerce.domain;
 
 public class Product {
-        private int productId;
-        private String productTitle;
-        private String productDescription;
-        private String productImage;
-        private double productPrice;
-        private double productDiscount;
-        private int productQuantity;
-        private int categoryId;
+    private int productId;
+    private String productTitle;
+    private String productDescription;
+    private String productImage;
+    private double productPrice;
+    private double productDiscount;
+    private int productQuantity;
+    private int categoryId;
 
 
     public Product() {
@@ -101,5 +101,4 @@ public class Product {
     }
 
 }
-
 
