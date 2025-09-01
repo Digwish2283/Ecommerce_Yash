@@ -25,9 +25,7 @@
             </div>
         </div>
     </div>
-
     <div class="container">
-        <!-- Fancy Search Section -->
         <div class="search-section mb-4">
             <form class="search-form row gx-2 gy-2">
                 <div class="search-group col-lg-6 col-md-12 mb-2 mb-lg-0">
@@ -61,7 +59,6 @@
                 </div>
             </form>
         </div>
-
         <div class="row">
             <!-- Filter Sidebar -->
             <div class="col-lg-3">
@@ -77,71 +74,27 @@
                                 <i class="fas fa-th me-2"></i>All Categories
                             </button>
                             <button class="category-filter">
-                                <i class="fas fa-laptop me-2"></i>Electronics
+                                <i class="fas fa-laptop me-2"></i>Category 1
                             </button>
                             <button class="category-filter">
-                                <i class="fas fa-tshirt me-2"></i>Clothing
+                                <i class="fas fa-tshirt me-2"></i>Category 2
                             </button>
                             <button class="category-filter">
-                                <i class="fas fa-book me-2"></i>Books
+                                <i class="fas fa-book me-2"></i>Category 3
                             </button>
                             <button class="category-filter">
-                                <i class="fas fa-home me-2"></i>Home & Garden
+                                <i class="fas fa-home me-2"></i>Category 4
                             </button>
                             <button class="category-filter">
-                                <i class="fas fa-dumbbell me-2"></i>Sports
+                                <i class="fas fa-dumbbell me-2"></i>Category 5
                             </button>
                         </div>
                     </div>
-                    <!-- Price Range -->
-                    <div class="mb-4">
-                        <h6 class="fw-bold">Price Range</h6>
-                        <div class="price-range">
-                            <input type="range" class="form-range" min="0" max="2000" value="1000" id="priceRange">
-                            <div class="d-flex justify-content-between">
-                                <span>$0</span>
-                                <span>$<span id="priceValue">1000</span></span>
-                                <span>$2000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Rating Filter -->
-                    <div class="mb-4">
-                        <h6 class="fw-bold">Rating</h6>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="rating5">
-                            <label class="form-check-label" for="rating5">
-                                <span class="stars">★★★★★</span> & up
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="rating4">
-                            <label class="form-check-label" for="rating4">
-                                <span class="stars">★★★★</span> & up
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="rating3">
-                            <label class="form-check-label" for="rating3">
-                                <span class="stars">★★★</span> & up
-                            </label>
-                        </div>
-                    </div>
-                    <!-- Clear Filters -->
-                    <button class="btn btn-outline-secondary w-100" >
-                        <i class="fas fa-times me-2"></i>Clear Filters
-                    </button>
                 </div>
             </div>
 
             <!-- Products Grid -->
             <div class="col-lg-9">
-                <div class="loading-spinner" id="loadingSpinner">
-                    <div class="spinner-border" style="color:#EE6983;" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <p>Loading products...</p>
-                </div>
                 <div class="row" id="productsContainer">
                     <!-- PRODUCT 1 -->
                     <div class="col-xl-4 col-md-6 mb-4 product-item" data-category="electronics" data-price="799">
@@ -154,7 +107,7 @@
                                 <h5 class="product-title">Smartphone X200</h5>
                                 <p class="product-description">Latest generation smartphone with amazing camera and battery life.</p>
                                 <div class="product-rating">
-                                    <span class="stars">★★★★☆</span>
+                                    <span class="stars">4 stars</span>
                                     <span class="text-muted">(123 reviews)</span>
                                 </div>
                                 <div class="product-price">
@@ -167,30 +120,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- PRODUCT 2 -->
-                    <div class="col-xl-4 col-md-6 mb-4 product-item" data-category="clothing" data-price="59">
-                        <div class="product-card">
-                            <div class="product-badge hot">HOT</div>
-                            <div class="product-image">
-                                <img src="https://www.themodestman.com/wp-content/uploads/2018/10/Pale-pink-tee-1-652x954.jpg"
-                                     alt="Summer Dress"/>
-                            </div>
-                            <div class="product-info">
-                                <h5 class="product-title">Summer Dress</h5>
-                                <p class="product-description">Light and airy dress, perfect for summer outings and vacations.</p>
-                                <div class="product-rating">
-                                    <span class="stars">★★★★★</span>
-                                    <span class="text-muted">(89 reviews)</span>
-                                </div>
-                                <div class="product-price">
-                                    $59
-                                    <span class="original-price"></span>
-                                </div>
-                                <button class="btn-add-cart">
-                                    <i class="fas fa-shopping-cart me-2"></i>Add to Cart
-                                </button>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <!-- Pagination -->
