@@ -14,16 +14,16 @@ public class Product {
     public Product() {
     }
 
-    public Product(int productId, String productTitle, String productDescription, String productImage, double productPrice, double productDiscount, int productQuantity, int categoryId) {
-        this.productId = productId;
-        this.productTitle = productTitle;
-        this.productDescription = productDescription;
-        this.productImage = productImage;
-        this.productPrice = productPrice;
-        this.productDiscount = productDiscount;
-        this.productQuantity = productQuantity;
-        this.categoryId = categoryId;
-    }
+//    public Product(int productId, String productTitle, String productDescription, String productImage, double productPrice, double productDiscount, int productQuantity, int categoryId) {
+//        this.productId = productId;
+//        this.productTitle = productTitle;
+//        this.productDescription = productDescription;
+//        this.productImage = productImage;
+//        this.productPrice = productPrice;
+//        this.productDiscount = productDiscount;
+//        this.productQuantity = productQuantity;
+//        this.categoryId = categoryId;
+//    }
 
     public Product(String productTitle, String productDescription, String productImage, double productPrice, double productDiscount, int productQuantity, int categoryId) {
         this.productTitle = productTitle;

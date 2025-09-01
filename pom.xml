@@ -24,10 +24,11 @@
 
       <!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl-api -->
       <dependency>
-          <groupId>javax.servlet.jsp.jstl</groupId>
-          <artifactId>jstl-api</artifactId>
+          <groupId>javax.servlet</groupId>
+          <artifactId>jstl</artifactId>
           <version>1.2</version>
       </dependency>
+
 
       <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
       <dependency>
