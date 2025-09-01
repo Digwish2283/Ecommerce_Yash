@@ -13,7 +13,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean registerUser(User user) {
         try {
-            Connection conn = JdbcUtil.getConn();
+            Connection conn = JdbcUtil.getConnection();
             UserDAO userDAO = new UserDAOImpl(conn);
             return userDAO.registerUser(user);
         } catch (Exception e) {
@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User loginUser(String email, String password) {
         try {
-            Connection conn = JdbcUtil.getConn();
+            Connection conn = JdbcUtil.getConnection();
             UserDAO userDAO = new UserDAOImpl(conn);
             return userDAO.loginUser(email, password);
         } catch (Exception e) {
